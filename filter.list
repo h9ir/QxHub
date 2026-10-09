@@ -11,3 +11,24 @@ host-suffix, wss.haoyundmn.com, reject
 host-suffix, new.xiongzhangad.com, reject
 host-suffix, alexametrics.com, reject
 host-keyword, in-page-push, reject
+
+
+# >>>>>>>>>>>>>>> ✅ A ✅ <<<<<<<<<<<<<<
+# > Apple
+host, advertising.apple.com, reject
+host, api-adservices.apple.com, reject
+host, apple.comscoreresearch.com, reject
+host, banners.itunes.apple.com, reject
+host, iad.apple.com, reject
+host, iadcontent.apple.com, reject
+host, iadctest.qwapi.com, reject
+host, iadmoo.apple.com, reject
+host, iadworkbench.apple.com, reject
+host, launch.apple.com, reject
+host, metrics.apple.com, reject
+host, qwapi.apple.com, reject
+host, securemetrics.apple.com, reject
+host, webproxy-advp.iad-apple.com, reject
+host, webproxy-advp.iad-apple.com.akadns.net, reject
+host-suffix, advp.apple.com, reject
+host-suffix, iadsdk.apple.com, reject
