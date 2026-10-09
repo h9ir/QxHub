@@ -8,9 +8,9 @@
 # > 12123 交管12123去广告
 # hostname = gab.122.gov.cn
 ^https?://gab.122.gov.cn/eapp/m/sysquery/adver$ url reject
-# > 12306
+# > 12306 请在本地添加分流 host, ad.12306.cn, direct
 # hostname = ad.12306.cn
-^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList url script-analyze-echo-response https://raw.githubusercontent.com/kokoryh/Script/master/js/12306.js
+^https?:\/\/ad\.12306\.cn\/ad\/ser\/getAdList url script-analyze-echo-response https://github.com/ddgksf2013/Scripts/raw/master/12306.js
 
 
 # >>>>>>>>>>>>>>> ✅ A ✅ <<<<<<<<<<<<<<
@@ -24,17 +24,62 @@
 ^https?:\/\/gdmf\.apple\.com\/v2\/(pmv|assets) url reject
 
 
+# >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
+# > 高德地图 host-suffix, optimus-ads.amap.com, direct
+# hostname = m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com
+# > 高德地图_开屏请求@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/aos\/alimama\/splash_screen url reject-200
+# > 高德地图_首页底部信息流@ddgksf2013
+^https?:\/\/.*\.amap\.com\/v\d\/ai_rec\/ url reject-dict
+# > 高德地图_amdc处理@ddgksf2013
+^http:\/\/amdc\.m\.taobao\.com url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
+# > 高德地图_底部tab栏角标@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_路线规划下方广告@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan\? url reject-dict
+# > 高德地图_首页右中广告@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_附近页面@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_打车页面处理@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_Tip请求@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information url reject-200
+# > 高德地图_首页底部处理@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_通用广告请求@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution url reject
+# > 高德地图_开屏广告@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_首页顶部推广@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_我的页面@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_搜索框热词@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# > 高德地图_搜索框scene@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend url reject-dict
+# > 高德地图_首页左上角gif@ddgksf2013
+^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif url reject-img
+# > 高德地图_左下天气@ddgksf2013
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dict
+
+
 # >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<
 # > Jable
 # hostname = 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, *.jable.tv, en.jable.tv, jable.tv
 ^https?:\/\/(jable|(en|\w{2,3})\.jable)\.tv\/(?!(.*(\?mode|login|cdn-cgi|verify|auth|captch|(\.(js|css|jpg|jpeg|png|webp|gif|zip|woff|woff2|m3u8|mp4|mov|m4v|avi|mkv|flv|rmvb|wmv|rm|asf|asx|mp3|json|ico|otf|ttf))))).* url script-response-body https://limbopro.com/Adguard/Adblock4limbo.js
 # Jable_MultiDomain(优先维护jable.tv，其他为盗版镜像站或有添料)  
 ^https?:\/\/(?:[a-zA-Z0-9-]+\.)*(?:91jable\.(?:top|sbs)|jable\.(?:cfd|tv)|jable1\.(?:com|net|art|nl)|jable888\.(?:com|net))\/(?!(?:.*\?(?:mode|login|cdn-cgi|verify|auth|captch)|.*\.(?:js|css|jpg|jpeg|png|webp|gif|zip|woff|woff2|m3u8|mp4|mov|m4v|avi|mkv|flv|rmvb|wmv|rm|asf|asx|mp3|json|ico|otf|ttf)$)).* url script-response-body https://limbopro.com/Adguard/Adblock4limbo.js
+
+
 # >>>>>>>>>>>>>>> ✅ M ✅ <<<<<<<<<<<<<<
 # > MissAv
 # hostname = missav.live, missav.ws, missav.ai, missav.com
 https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 ^https?:\/\/missav\.(ws|live|com|ai)\/(?!(.*(api|login|cdn-cgi|verify|auth|captch|(\.(js|css|jpg|jpeg|png|webp|gif|zip|woff|woff2|m3u8|mp4|mov|m4v|avi|mkv|flv|rmvb|wmv|rm|asf|asx|mp3|json|ico|otf|ttf))))).* url script-response-body https://limbopro.com/Adguard/Adblock4limbo.js
+
+
 # >>>>>>>>>>>>>>> ✅ Y ✅ <<<<<<<<<<<<<<
 # > 光大银行
 # hostname = mobile.cebbank.com, yghsh.cebbank.com
@@ -84,5 +129,15 @@ host-keyword, talk.bz.getui.com, reject
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interface\/common\/(qryPopAds|qryLaunchAds)\.do url reject-200
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/rcg\/index\.html\?callbackurl=rcg\/index\.html&orclogin=1& url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/mdb.js
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/appInfo\/appNewestVersion url reject-200
-
+# > Youtube
+# hostname = -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
+# ======= 视频广告请求 ======= #
+(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+) url 302 $1$2$3
+^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad url reject-200
+# ======= 视频PIP|后台播放|瀑布流|搜索页|播放页|短视频|贴片广告  ======= #
+^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) url script-response-body https://raw.githubusercontent.com/Maasea/sgmodule/refs/heads/master/Script/Youtube/youtube.response.js
+# ======= 通用广告请求 ======= #
+^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads url reject-200
+^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) url reject-200
+^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext url reject-200
 
