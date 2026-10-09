@@ -32,3 +32,30 @@ host, webproxy-advp.iad-apple.com, reject
 host, webproxy-advp.iad-apple.com.akadns.net, reject
 host-suffix, advp.apple.com, reject
 host-suffix, iadsdk.apple.com, reject
+
+
+# >>>>>>>>>>>>>>> ✅ D ✅ <<<<<<<<<<<<<<
+# > 抖音
+host-keyword, bds.snssdk.com, reject
+host-keyword, p3.pstatp.com, reject
+
+
+# >>>>>>>>>>>>>>> ✅ Y ✅ <<<<<<<<<<<<<<
+# > 光大银行 阳光惠生活
+host-keyword, talk.bz.getui.com, reject
+# > 民生银行
+host-keyword, cm-10-134.getui.com, reject
+host-keyword, sdk.open.talk.getui.com, reject
+host-keyword, cm-10-35.getui.com, reject
+host-keyword, c-hzgt2.getui.com, reject
+# > 中信银行
+host-suffix, sis.jpush.io, reject
+host-suffix, s.jpush.cn, reject
+host-suffix, jpush.cn, reject
+host-suffix, im64.jpush.cn, reject
+host-suffix, im.jpush.cn, reject
+host-suffix, jpush.html5.qq.com, reject
+# > 买单吧
+host-suffix, c-hzgt2.getui.com, reject
+host-suffix, c-hzgt2.getui.com, reject
+host-suffix, gs.getui.com, reject
