@@ -6,6 +6,7 @@
 
 # >>>>>>>>>>>>>>> ✅ 1 ✅ <<<<<<<<<<<<<<
 # > 12123
-# hostname = gab.122.gov.cn
-# > 交管12123去广告
-^https?://gab.122.gov.cn/eapp/m/sysquery/adver$ url reject
+host-suffix, v3.fstats.xyz, reject 
+host-suffix, wss.haoyundmn.com, reject 
+host-suffix, new.xiongzhangad.com, reject 
+host-suffix, alexametrics.com, reject
