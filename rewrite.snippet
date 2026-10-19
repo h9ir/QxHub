@@ -121,10 +121,13 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 ^https?:\/\/www\.cmbc\.com\.cn\/m\/image\/loadingpage\/ url reject-200
 ^https?:\/\/www\.cmbc\.com\.cn\/m\/image\/banner\/.*.png url reject-200
 # > 农业银行
-# hostname = midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com
-^https?:\/\/midc\.cdn-static\.abchina\.com\.cn\/distributecenterimg\/file\/download\/(ed64|74b5) url reject
-^https?:\/\/enjoy\.cdn-static\.abchina\.com\/yx-engine-web\/file\/download\/(?!7dc2|fe96|cea3|06a8|1b11|d57b|6918|61db|2d58|aa23|) url reject-200
-^https?:\/\/firefly\.abchina\.com\.cn\/firefly-collection\/Collect url reject-200
+# hostname = midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn
+# 1. 拦截 CDN 静态分发中心的文件/开屏广告图片（匹配路径更灵活）
+^https?:\/\/midc\.cdn-static\.abchina\.com\.cn\/distributecenterimg\/file\/download\/[a-zA-Z0-9_-]+ url reject
+# 2. 营销引擎 (yx-engine) 广告与推广弹窗拦截（采用负向断言白名单机制，保留核心UI组件）
+^https?:\/\/enjoy\.cdn-static\.abchina\.com\/yx-engine-web\/file\/download\/(?!(7dc2|fe96|cea3|06a8|1b11|d57b|6918|61db|2d58|aa23|8f1a|3e9c|4c2b)) url reject-200
+# 3. 拦截后台数据采集与用户行为埋点（萤火虫收集系统）
+^https?:\/\/firefly\.abchina\.com\.cn\/firefly-collection\/(Collect|upload|event) url reject-200
 # > 浦发银行
 # hostname = lban.spdb.com.cn, wap.spdb.com.cn
 ^https?:\/\/lban\.spdb\.com\.cn\/mspmk-web-component\/getAdvList\.ah$ url reject
@@ -202,4 +205,4 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com, api.m.jd.com, dns.jd.com, m.360buyimg.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, god.game.163.com, *.god.game.163.com, api.51credit.com
+hostname = hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com, api.m.jd.com, dns.jd.com, m.360buyimg.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, god.game.163.com, *.god.game.163.com, api.51credit.com
