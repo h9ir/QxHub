@@ -27,42 +27,56 @@
 # >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
 # > 高德地图 host-suffix, optimus-ads.amap.com, direct
 # hostname = m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com
-# > 高德地图_开屏请求@ddgksf2013
+# ==========================================
+# 一、 开屏与启动广告拦截
+# ==========================================
 ^https?:\/\/.*\.amap\.com\/ws\/aos\/alimama\/splash_screen url reject-200
-# > 高德地图_首页底部信息流@ddgksf2013
-^https?:\/\/.*\.amap\.com\/v\d\/ai_rec\/ url reject-dict
-# > 高德地图_amdc处理@ddgksf2013
-^http:\/\/amdc\.m\.taobao\.com url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
-# > 高德地图_底部tab栏角标@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_路线规划下方广告@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan\? url reject-dict
-# > 高德地图_首页右中广告@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_附近页面@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_打车页面处理@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_Tip请求@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information url reject-200
-# > 高德地图_首页底部处理@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_通用广告请求@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution url reject
-# > 高德地图_开屏广告@ddgksf2013
 ^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_首页顶部推广@ddgksf2013
+# ==========================================
+# 二、 首页与界面净化（横幅、推荐、角标、GIF）
+# ==========================================
+# 首页顶部推广 / 消息盒子弹窗
 ^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_我的页面@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_搜索框热词@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# > 高德地图_搜索框scene@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend url reject-dict
-# > 高德地图_首页左上角gif@ddgksf2013
+# 首页右中广告 / 动态配置更新
+^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# 首页底部信息流 / AI 推荐
+^https?:\/\/.*\.amap\.com\/v\d\/ai_rec\/ url reject-dict
+# 首页底部导航/生活频道处理
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# 首页左上角活动 GIF 动图
 ^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif url reject-img
-# > 高德地图_左下天气@ddgksf2013
-^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dict
+# 底部 Tab 栏红点/角标与消息通知
+^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# ==========================================
+# 三、 搜索框与推荐优化
+# ==========================================
+# 搜索框热词推广
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# 搜索场景推荐
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend url reject-dict
+# 附近页面智能推荐
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# ==========================================
+# 四、 路线规划与出行页面
+# ==========================================
+# 路线规划下方植入广告/卡片服务
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan\? url reject-dict
+# 打车页面资源推广
+^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# 订单/Tips 页面弹窗信息
+^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information url reject-200
+# ==========================================
+# 五、 个人中心与底层网络分流
+# ==========================================
+# 我的页面（Profile）推广节点净化
+^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# 通用广告追踪与归因上报
+^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution url reject
+# 阿里移动端域名控制器 (AMDC) 路由重定向
+^http:\/\/amdc\.m\.taobao\.com url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
+# 💡 【可选保留项】如果你习惯看地图左下角的天气气泡，请将下面这行注释掉（前面加 #）
+# 默认规则会把左下角天气组件屏蔽，如需保留天气请删除或注释该行：
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dic
 
 
 # >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<
@@ -205,4 +219,4 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com, api.m.jd.com, dns.jd.com, m.360buyimg.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, god.game.163.com, *.god.game.163.com, api.51credit.com
+hostname = hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com, amdc.m.taobao.com, *.amap.com, api.m.jd.com, dns.jd.com, m.360buyimg.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, god.game.163.com, *.god.game.163.com, api.51credit.com
