@@ -27,56 +27,30 @@
 # >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
 # > 高德地图 host-suffix, optimus-ads.amap.com, direct
 # hostname = m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com
-# ==========================================
-# 一、 开屏与启动广告拦截
-# ==========================================
+# 1. 开屏请求与开屏广告处理
 ^https?:\/\/.*\.amap\.com\/ws\/aos\/alimama\/splash_screen url reject-200
-^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# ==========================================
-# 二、 首页与界面净化（横幅、推荐、角标、GIF）
-# ==========================================
-# 首页顶部推广 / 消息盒子弹窗
-^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 首页右中广告 / 动态配置更新
-^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 首页底部信息流 / AI 推荐
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# 2. 首页与界面元素净化（信息流、横幅、角标、GIF）
 ^https?:\/\/.*\.amap\.com\/v\d\/ai_rec\/ url reject-dict
-# 首页底部导航/生活频道处理
-^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 首页左上角活动 GIF 动图
+^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
 ^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif url reject-img
-# 底部 Tab 栏红点/角标与消息通知
-^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# ==========================================
-# 三、 搜索框与推荐优化
-# ==========================================
-# 搜索框热词推广
-^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 搜索场景推荐
+# 3. 搜索框与周边推荐优化
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
 ^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend url reject-dict
-# 附近页面智能推荐
-^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# ==========================================
-# 四、 路线规划与出行页面
-# ==========================================
-# 路线规划下方植入广告/卡片服务
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+# 4. 路线规划、打车与订单页面优化
 ^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan\? url reject-dict
-# 打车页面资源推广
-^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 订单/Tips 页面弹窗信息
+^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
 ^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information url reject-200
-# ==========================================
-# 五、 个人中心与底层网络分流
-# ==========================================
-# 我的页面（Profile）推广节点净化
-^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 通用广告追踪与归因上报
+# 5. 个人中心、归因追踪与底层路由处理
+^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
 ^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution url reject
-# 阿里移动端域名控制器 (AMDC) 路由重定向
-^http:\/\/amdc\.m\.taobao\.com url script-response-body https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
-# 💡 【可选保留项】如果你习惯看地图左下角的天气气泡，请将下面这行注释掉（前面加 #）
-# 默认规则会把左下角天气组件屏蔽，如需保留天气请删除或注释该行：
-^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dic
+^http:\/\/amdc\.m\.taobao\.com url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
+# 6. 左下角天气气泡处理（如需保留左下角天气，请在行首加上 # 注释）
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dict
 
 
 # >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<
