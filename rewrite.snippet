@@ -33,8 +33,8 @@
 # 2. 首页与界面元素净化（信息流、横幅、角标、GIF）
 ^https?:\/\/.*\.amap\.com\/v\d\/ai_rec\/ url reject-dict
 ^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# ^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# ^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
 ^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
 ^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif url reject-img
 # 3. 搜索框与周边推荐优化
