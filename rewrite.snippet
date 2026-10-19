@@ -53,6 +53,21 @@
 ^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dict
 
 
+# >>>>>>>>>>>>>>> ✅ H ✅ <<<<<<<<<<<<<<
+# > 红果漫剧 / 红果短剧
+# hostname = *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com
+# 1. 屏蔽开屏广告与启动营销拉取
+^https?:\/\/.*\.snssdk\.com\/service\/\d\/splash_ad\/ url reject-200
+^https?:\/\/.*\.pstatp\.com\/.*\/splash\/ url reject-200
+# 2. 屏蔽字节穿山甲广告联盟 (Pangolin SDK) 广告下发与上报（关键：斩断信息流广告源头）
+^https?:\/\/.*\.pglstatp-toutiao\.com\/.* url reject
+^https?:\/\/.*\.pangolin-sdk-toutiao\.com\/.* url reject
+^https?:\/\/.*\.byteoversea\.com\/api\/ad\/ url reject-dict
+# 3. 屏蔽日志收集、用户行为追踪与广告归因（减少后台消耗与隐私泄露）
+^https?:\/\/.*\.snssdk\.com\/service\/\d\/app_log\/ url reject-200
+^https?:\/\/.*\.toblog\.ctobsnssdk\.com\/.* url reject-200
+
+
 # >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<
 # > 京东
 # hostname = api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com
@@ -208,4 +223,4 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, amdc.m.taobao.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, m.360buyimg.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, *.god.game.163.com, api.51credit.com
+hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, amdc.m.taobao.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, m.360buyimg.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, *.god.game.163.com, api.51credit.com
