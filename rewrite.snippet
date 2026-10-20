@@ -187,7 +187,6 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/appInfo\/appNewestVersion url reject-200
 # > Youtube
 # hostname = -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
-[rewrite_local]
 # ======= 视频广告请求 ======= #
 "(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+)" url 302 $1$2$3
 "^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad" url reject-200
