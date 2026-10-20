@@ -186,16 +186,17 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/rcg\/index\.html\?callbackurl=rcg\/index\.html&orclogin=1& url script-response-body https://raw.githubusercontent.com/zirawell/R-Store/main/Res/Scripts/AntiAd/mdb.js
 ^https?:\/\/creditcardapp\.bankcomm\.(com|cn)\/mappweb_interaction\/appInfo\/appNewestVersion url reject-200
 # > Youtube
-# hostname = !-redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com
+# hostname = -redirector*.googlevideo.com,*.googlevideo.com,www.youtube.com,s.youtube.com,youtubei.googleapis.com
+[rewrite_local]
 # ======= 视频广告请求 ======= #
 "(^https?:\/\/[\w-]+\.googlevideo\.com\/(?!dclk_video_ads).+?)&ctier=L(&.+?),ctier,(.+)" url 302 $1$2$3
 "^https?:\/\/[\w-]+\.googlevideo\.com\/(?!(dclk_video_ads|videoplayback\?)).+&oad" url reject-200
+# ======= 视频PIP|后台播放|瀑布流|搜索页|播放页|短视频|贴片广告 ======= #
+^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) url script-response-body https://raw.githubusercontent.com/Maasea/sgmodule/refs/heads/master/Script/Youtube/youtube.response.js
 # ======= 通用广告请求 ======= #
 ^https?:\/\/(www|s)\.youtube\.com\/api\/stats\/ads url reject-200
 ^https?:\/\/(www|s)\.youtube\.com\/(pagead|ptracking) url reject-200
 ^https?:\/\/s\.youtube\.com\/api\/stats\/qoe\?adcontext url reject-200
-# ======= 稳定去广告 + 隐藏 Shorts 相关 UI ======= #
-^https?:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide|account\/get_setting|get_watch) url script-response-body https://raw.githubusercontent.com/Aioneas/Surge/main/Script/youtube.response.js
 
 
 # >>>>>>>>>>>>>>> ✅ W ✅ <<<<<<<<<<<<<<
@@ -223,4 +224,5 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, amdc.m.taobao.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, m.360buyimg.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, !-redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, *.god.game.163.com, api.51credit.com
+[mitm]
+hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, amdc.m.taobao.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, m.360buyimg.com, appconf.mail.163.com, support.you.163.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.wfdata.club, *.god.game.163.com, api.51credit.com, !-redirector*.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com
