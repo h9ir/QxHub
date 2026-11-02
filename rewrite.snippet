@@ -70,13 +70,19 @@
 
 # >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<
 # > 京东
-# hostname = api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com
-# 1. 京东开屏广告请求拦截
+# ============================================
+# 京东 & 京东金融 兼顾稳定性与去广告重写规则
+# ============================================
+hostname = api.m.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com
+# 1. 京东 & 京东金融 开屏广告拦截
+# 拦截京东 App 开屏广告
 ^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=splash.* url reject-dict
-# 2. 首页浮窗、签到弹窗及营销活动接口（安全过滤，不影响正常购物）
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(queryAds|popLayer|interact|cubeSign|switches).* url reject-dict
-# 3. 京东广告联盟、DSP 流量与统计收集
-^https?:\/\/(bdsp-x|dsp-x|ms\.jr)\.jd\.com\/.* url reject-200
+# 拦截京东金融 App 开屏广告
+^https?:\/\/m\.jr\.jd\.com\/vip\/splash.* url reject-200
+# 2. 首页与通用营销/弹窗/浮窗拦截（已避开 switches 开关）
+^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(queryAds|popLayer|interact|getAdCustomizedInfo|getNewBanners) url reject-dict
+# 3. DSP 广告联盟与数据统计拦截（严格排除金融登录域名 ms.jr.jd.com）
+^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/.* url reject-200
 # > Jable
 # hostname = 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, *.jable.tv, en.jable.tv, jable.tv
 ^https?:\/\/(jable|(en|\w{2,3})\.jable)\.tv\/(?!(.*(\?mode|login|cdn-cgi|verify|auth|captch|(\.(js|css|jpg|jpeg|png|webp|gif|zip|woff|woff2|m3u8|mp4|mov|m4v|avi|mkv|flv|rmvb|wmv|rm|asf|asx|mp3|json|ico|otf|ttf))))).* url script-response-body https://limbopro.com/Adguard/Adblock4limbo.js
@@ -215,4 +221,4 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, amdc.m.taobao.com, api.m.jd.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, acs.m.taobao.com, guide-acs.m.taobao.com, poplayer.template.alibaba.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, api.wfdata.club, *.god.game.163.com, api.51credit.com
+hostname = api.m.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com, acs.m.taobao.com, amdc.m.taobao.com, guide-acs.m.taobao.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, poplayer.template.alibaba.com, gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.51credit.com, api.wfdata.club, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, *.god.game.163.com
