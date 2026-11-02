@@ -42,16 +42,12 @@
 
 
 # >>>>>>>>>>>>>>> ✅ H ✅ <<<<<<<<<<<<<< ============================================
-# > 红果短剧 / 红果漫剧 首页与推荐流修复重写 ============================================
-# hostname = *.snssdk.com, *.pstatp.com, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.byteoversea.com, *.toblog.ctobsnssdk.com
-# 1. 屏蔽开屏广告（精准匹配开屏，放行普通初始化）
-^https?:\/\/.*\.snssdk\.com\/service\/\d\/splash_ad\/ url reject-dict
-^https?:\/\/.*\.pstatp\.com\/.*\/splash\/ url reject-200
-# 2. 斩断穿山甲 (Pangolin) 商业广告源头（去视频间隙/信息流广告，不影响视频内容本身）
+# > 红果短剧 / 红果漫剧  ============================================
+# hostname = *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com
+# 1. 拦截穿山甲广告 SDK 下发与展示（切断视频间隙与信息流广告源头）
 ^https?:\/\/.*\.pglstatp-toutiao\.com\/.* url reject
 ^https?:\/\/.*\.pangolin-sdk-toutiao\.com\/.* url reject
-^https?:\/\/.*\.byteoversea\.com\/api\/ad\/ url reject-dict
-# 3. 屏蔽广告归因与追踪（已剔除 app_log，保证历史记录与预约）
+# 2. 拦截广告归因与行为追踪（不影响 app_log 历史记录）
 ^https?:\/\/.*\.toblog\.ctobsnssdk\.com\/.* url reject-200
 
 
@@ -208,4 +204,4 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = api.m.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com, acs.m.taobao.com, amdc.m.taobao.com, guide-acs.m.taobao.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, poplayer.template.alibaba.com, gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.51credit.com, api.wfdata.club, *.snssdk.com, *.pstatp.com, *.byteoversea.com, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, *.god.game.163.com
+hostname = api.m.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com, acs.m.taobao.com, amdc.m.taobao.com, guide-acs.m.taobao.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, poplayer.template.alibaba.com, gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.51credit.com, api.wfdata.club, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, *.god.game.163.com
