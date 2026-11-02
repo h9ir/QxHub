@@ -81,8 +81,8 @@
 # hostname = m.360buyimg.com, bdsp-x.jd.com, dsp-x.jd.com, ms.jr.jd.com
 # 1.京东金融启动页广告图片
 ^https?://m.360buyimg.com/mobilecms/s1125x2436_jfs/ url reject-200
-# 2.京东广告联盟
-^https?://(bdsp-x|dsp-x).jd.com/adx/ url reject-200
+京东广告联盟
+# 2.^https?://(bdsp-x|dsp-x).jd.com/adx/ url reject-200
 # > Jable
 # hostname = 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, *.jable.tv, en.jable.tv, jable.tv
 ^https?:\/\/(jable|(en|\w{2,3})\.jable)\.tv\/(?!(.*(\?mode|login|cdn-cgi|verify|auth|captch|(\.(js|css|jpg|jpeg|png|webp|gif|zip|woff|woff2|m3u8|mp4|mov|m4v|avi|mkv|flv|rmvb|wmv|rm|asf|asx|mp3|json|ico|otf|ttf))))).* url script-response-body https://limbopro.com/Adguard/Adblock4limbo.js
