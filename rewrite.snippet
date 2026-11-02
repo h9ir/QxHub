@@ -24,33 +24,21 @@
 ^https?:\/\/gdmf\.apple\.com\/v2\/(pmv|assets) url reject
 
 
-# >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
-# > 高德地图 host-suffix, optimus-ads.amap.com, direct
-# hostname = m5.amap.com, m5-zb.amap.com, center.amap.com, amap-aos-info-nogw.amap.com, ai.amap.com
-# 1. 开屏请求与开屏广告处理
-^https?:\/\/.*\.amap\.com\/ws\/aos\/alimama\/splash_screen url reject-200
-^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 2. 首页与界面元素净化（信息流、横幅、角标、GIF）
-^https?:\/\/.*\.amap\.com\/v\d\/ai_rec\/ url reject-dict
-^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif url reject-img
-# 3. 搜索框与周边推荐优化
-^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend url reject-dict
-^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-# 4. 路线规划、打车与订单页面优化
-^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan\? url reject-dict
-^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information url reject-200
-# 5. 个人中心、归因追踪与底层路由处理
-^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amap.js
-^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution url reject
-^http:\/\/amdc\.m\.taobao\.com url script-response-body https://ghproxy.net/https://raw.githubusercontent.com/ddgksf2013/Scripts/refs/heads/master/amdc.js
-# 6. 左下角天气气泡处理（如需保留左下角天气，请在行首加上 # 注释）
-^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather url reject-dict
+# >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<< ============================================
+# > 高德地图 兼顾导航/路线规划与全面去广告重写
+# ============================================
+# hostname = *.amap.com
+# 1. 拦截开屏广告与启动营销拉取
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/splashscreen\/ url reject-dict
+# 2. 拦截首页/导航页浮窗、弹窗活动与红点提示（使用 reject-dict 避免页面卡死）
+^https?:\/\/.*\.amap\.com\/ws\/message\/v\d\/notice\/ url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/poplayer\/ url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/banner\/ url reject-dict
+# 3. 拦截打车/附近推荐中的营销推广广告
+^https?:\/\/.*\.amap\.com\/ws\/promotion-dispatcher\/ url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/ad\/ url reject-dict
+# 4. 屏蔽打点统计与设备追踪（拦截高德及第三方追踪，减少后台电量消耗）
+^https?:\/\/.*\.amap\.com\/ws\/log\/upload\/ url reject-200
 
 
 # >>>>>>>>>>>>>>> ✅ H ✅ <<<<<<<<<<<<<< ============================================
