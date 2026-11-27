@@ -52,20 +52,20 @@
 
 
 # >>>>>>>>>>>>>>> ✅ J ✅ <<<<<<<<<<<<<<
-# > 京东
-# ============================================
-# 京东 & 京东金融 兼顾稳定性与去广告重写规则
-# ============================================
-# hostname = api.m.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com
-# 1. 京东 & 京东金融 开屏广告拦截
-# 拦截京东 App 开屏广告
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=splash.* url reject-dict
-# 拦截京东金融 App 开屏广告
-^https?:\/\/m\.jr\.jd\.com\/vip\/splash.* url reject-200
-# 2. 首页与通用营销/弹窗/浮窗拦截（已避开 switches 开关）
-^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=(queryAds|popLayer|interact|getAdCustomizedInfo|getNewBanners) url reject-dict
-# 3. DSP 广告联盟与数据统计拦截（严格排除金融登录域名 ms.jr.jd.com）
-^https?:\/\/(bdsp-x|dsp-x)\.jd\.com\/.* url reject-200
+# > 京东系全能去广告重写（适配新版网关路径 & 参数乱序，零误杀）
+# hostname = api.m.jd.com, ms.jr.jd.com, daojia.jd.com, *.jd.com, jpush.jd.com
+# 1. 京东主站 & 京喜 - 新版开屏广告与启动预加载（兼容 /client.action 与 /api 路径）
+^https?:\/\/api\.m\.jd\.com\/(client\.action|api)\?.*functionId=(start|basicConfig|welcomeHome|queryMaterialAdverts)(&|$) url reject-dict
+# 2. 京东主站 - 首页浮窗、活动弹窗、搜索框热词推广与信息流广告（保留正常搜索与推荐）
+^https?:\/\/api\.m\.jd\.com\/(client\.action|api)\?.*functionId=(getTabHomeInfo|floatLayer|babelActivity|showMsg|queryPopup|searchBoxWord|stationPullService|uniformRecommend0|uniformRecommend6)(&|$) url reject-dict
+# 3. 京东金融 - 新版开屏、首页弹窗与悬浮推广挂件
+^https?:\/\/ms\.jr\.jd\.com\/gw\/generic\/(aladdin|base|uc)\/(new\/)?m\/(getSplashScreen|getLaunchAd|queryPopupInfo|getFloatIcon|queryAdInfo) url reject-dict
+# 4. 京东到家 - 启动开屏与首页弹窗
+^https?:\/\/daojia\.jd\.com\/client\?.*functionId=(startup\/getSplash|home\/popup)(&|$) url reject-dict
+# 5. 屏蔽隐私埋点、崩溃日志上报与推送遥测（降低后台耗电，不影响图片与订单）
+^https?:\/\/(mercury|uranus|mars)\.jd\.com\/log\.gif url reject-200
+^https?:\/\/\w+\.jddebug\.com\/diagnose url reject-200
+^https?:\/\/jpush\.jd\.com\/.*\/report url reject-200
 # > Jable
 # hostname = 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, *.jable.tv, en.jable.tv, jable.tv
 ^https?:\/\/(jable|(en|\w{2,3})\.jable)\.tv\/(?!(.*(\?mode|login|cdn-cgi|verify|auth|captch|(\.(js|css|jpg|jpeg|png|webp|gif|zip|woff|woff2|m3u8|mp4|mov|m4v|avi|mkv|flv|rmvb|wmv|rm|asf|asx|mp3|json|ico|otf|ttf))))).* url script-response-body https://limbopro.com/Adguard/Adblock4limbo.js
@@ -204,4 +204,4 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = api.m.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com, acs.m.taobao.com, amdc.m.taobao.com, guide-acs.m.taobao.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, poplayer.template.alibaba.com, gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.51credit.com, api.wfdata.club, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, *.god.game.163.com
+hostname = api.m.jd.com, ms.jr.jd.com, daojia.jd.com, *.jd.com, jpush.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com, acs.m.taobao.com, amdc.m.taobao.com, guide-acs.m.taobao.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, poplayer.template.alibaba.com, gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.51credit.com, api.wfdata.club, *.pglstatp-toutiao.com, *.pangolin-sdk-toutiao.com, *.toblog.ctobsnssdk.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, *.god.game.163.com
