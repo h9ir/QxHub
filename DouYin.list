@@ -1,4 +1,9 @@
-# 红果短剧 & 字节跳动全系直连分流（防止 IP 属地识别异常导致隐藏预约功能）
+#############################################
+# Quantumelt X DouYin分流
+#############################################
+
+
+# 红果短剧 & 字节跳动全系直连分流
 host-suffix, snssdk.com, DIRECT
 host-suffix, zijieapi.com, DIRECT
 host-suffix, byteimg.com, DIRECT
