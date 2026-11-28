@@ -1,0 +1,10 @@
+# 红果短剧 & 字节跳动全系直连分流（防止 IP 属地识别异常导致隐藏预约功能）
+host-suffix, snssdk.com, DIRECT
+host-suffix, zijieapi.com, DIRECT
+host-suffix, byteimg.com, DIRECT
+host-suffix, toutiaoapi.com, DIRECT
+host-suffix, amemv.com, DIRECT
+host-suffix, bytedance.com, DIRECT
+host-suffix, bytednsdoc.com, DIRECT
+host-suffix, pstatp.com, DIRECT
+host-suffix, volccdn.com, DIRECT
