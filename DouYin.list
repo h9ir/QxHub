@@ -3,13 +3,56 @@
 #############################################
 
 
-# 红果短剧 & 字节跳动全系直连分流
-host-suffix, snssdk.com, DIRECT
-host-suffix, zijieapi.com, DIRECT
-host-suffix, byteimg.com, DIRECT
-host-suffix, toutiaoapi.com, DIRECT
-host-suffix, amemv.com, DIRECT
-host-suffix, bytedance.com, DIRECT
-host-suffix, bytednsdoc.com, DIRECT
-host-suffix, pstatp.com, DIRECT
-host-suffix, volccdn.com, DIRECT
+# 抖音系 / 字节跳动全系分流规则
+# 包含：抖音、红果短剧、红果漫剧、今日头条、西瓜视频、汽水音乐及火山引擎基础服务
+# --- 核心业务与 API 接口 ---
+host-suffix, amemv.com, DouYin
+host-suffix, bytedance.com, DouYin
+host-suffix, bytedns.com, DouYin
+host-suffix, bytednsdoc.com, DouYin
+host-suffix, bytegoofy.com, DouYin
+host-suffix, bytehwm.com, DouYin
+host-suffix, byteoversea.com, DouYin
+host-suffix, douyin.com, DouYin
+host-suffix, douyinact.com, DouYin
+host-suffix, douyinliving.com, DouYin
+host-suffix, douyinpic.com, DouYin
+host-suffix, douyinstatic.com, DouYin
+host-suffix, douyinvod.com, DouYin
+host-suffix, iesdouyin.com, DouYin
+host-suffix, snssdk.com, DouYin
+host-suffix, toutiao.com, DouYin
+host-suffix, toutiaoapi.com, DouYin
+host-suffix, toutiaocdn.com, DouYin
+host-suffix, toutiaocloud.com, DouYin
+host-suffix, toutiaopage.com, DouYin
+host-suffix, toutiaovod.com, DouYin
+host-suffix, zijieapi.com, DouYin
+host-suffix, zijieurl.com, DouYin
+# --- 视频流、图片与静态资源 CDN ---
+host-suffix, bytecdn.cn, DouYin
+host-suffix, bytegecko.com, DouYin
+host-suffix, byteimg.com, DouYin
+host-suffix, bytemastatic.com, DouYin
+host-suffix, bytescm.com, DouYin
+host-suffix, bytetos.com, DouYin
+host-suffix, bytevcloud.com, DouYin
+host-suffix, ixigua.com, DouYin
+host-suffix, ixiguavideo.com, DouYin
+host-suffix, pstatp.com, DouYin
+host-suffix, qishui.com, DouYin
+# --- 火山引擎（红果短剧/漫剧底层云服务与推流） ---
+host-suffix, volccdn.com, DouYin
+host-suffix, volcengine.com, DouYin
+host-suffix, volces.com, DouYin
+host-suffix, volcgslb.com, DouYin
+host-suffix, volcvod.com, DouYin
+# --- 独立第三方广告组件 ---
+host-suffix, pangolin-sdk-toutiao.com, DouYin
+host-suffix, pangolin-sdk-toutiao-b.com, DouYin
+host-suffix, pangolin-sdk-toutiao1.com, DouYin
+host-suffix, pglstatp-toutiao.com, DouYin
+# --- 常见 User-Agent 补充匹配 ---
+user-agent, Aweme*, DouYin
+user-agent, *ByteDance*, DouYin
+user-agent, *Novel*, DouYin
