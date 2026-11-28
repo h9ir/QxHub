@@ -24,21 +24,26 @@
 ^https?:\/\/gdmf\.apple\.com\/v2\/(pmv|assets) url reject
 
 
-# >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<< ============================================
-# > 高德地图 兼顾导航/路线规划与全面去广告重写
-# ============================================
+# >>>>>>>>>>>>>>> ✅ G ✅ <<<<<<<<<<<<<<
+# > 高德地图
 # hostname = *.amap.com
-# 1. 拦截开屏广告与启动营销拉取
-^https?:\/\/.*\.amap\.com\/ws\/valueadded\/splashscreen\/ url reject-dict
-# 2. 拦截首页/导航页浮窗、弹窗活动与红点提示（使用 reject-dict 避免页面卡死）
-^https?:\/\/.*\.amap\.com\/ws\/message\/v\d\/notice\/ url reject-dict
-^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/poplayer\/ url reject-dict
-^https?:\/\/.*\.amap\.com\/ws\/valueadded\/banner\/ url reject-dict
-# 3. 拦截打车/附近推荐中的营销推广广告
-^https?:\/\/.*\.amap\.com\/ws\/promotion-dispatcher\/ url reject-dict
-^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/ad\/ url reject-dict
-# 4. 屏蔽打点统计与设备追踪（拦截高德及第三方追踪，减少后台电量消耗）
-^https?:\/\/.*\.amap\.com\/ws\/log\/upload\/ url reject-200
+# 开屏广告与启动页推广
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/aos\/perception\/publicTravel\/beforeNavi url reject-dict
+# 首页弹窗、营销活动与底部信息流
+^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/.*_information url reject-200
+^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull url reject-dict
+# 导航结束页推广与周边推荐
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan url reject-dict
+^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaasv3 url reject-dict
+# 第三方广告 SDK 与日志上报
+^https?:\/\/optimus-ads\.amap\.com\/ url reject-200
+^https?:\/\/page\.amap\.com\/.*\/ad\/ url reject-200
+^https?:\/\/logs\.amap\.com\/ws\/log\/upload url reject-200
 
 
 # >>>>>>>>>>>>>>> ✅ H ✅ <<<<<<<<<<<<<< ============================================
