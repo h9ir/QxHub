@@ -48,15 +48,12 @@
 
 # >>>>>>>>>>>>>>> ✅ H ✅ <<<<<<<<<<<<<<
 # > 红果短剧 / 红果漫剧
-# hostname = *.pangolin-sdk-toutiao*.com, *.pglstatp-toutiao.com, *.snssdk.com, *.zijieapi.com
-# 1. 纯开屏广告接口（仅拦截 splash 商业开屏，不影响启动配置与预约组件）
-^https?:\/\/.*\.snssdk\.com\/api\/ad\/splash\/ url reject-dict
-^https?:\/\/.*\.zijieapi\.com\/api\/ad\/splash\/ url reject-dict
-# 2. 穿山甲 (Pangle) 独立广告 SDK（精准拦截插屏/贴片广告拉取，不碰业务推荐流）
+# hostname = *.pangolin-sdk-toutiao*.com, *.pglstatp-toutiao.com
+# 1. 仅拦截穿山甲 (Pangle) 独立第三方广告 SDK 拉取
 ^https?:\/\/.*\.pangolin-sdk-toutiao.*\.com\/api\/ad\/union\/sdk\/get_ads\/ url reject-dict
 ^https?:\/\/.*\.pangolin-sdk-toutiao.*\.com\/api\/ad\/union\/sdk\/stats\/ url reject-200
 ^https?:\/\/.*\.pangolin-sdk-toutiao.*\.com\/api\/ad\/union\/sdk\/log\/ url reject-200
-# 3. 穿山甲广告模板与落地页资源（仅匹配 ad-pattern 广告路径，绝不拦截剧集封面）
+# 2. 拦截穿山甲独立广告落地页与素材域名
 ^https?:\/\/sf\d+-fe-tos\.pglstatp-toutiao\.com\/obj\/ad-pattern\/ url reject-200
 ^https?:\/\/.*\.pglstatp-toutiao\.com\/.*\/ad\/ url reject-200
 
@@ -214,4 +211,4 @@ https://creative.live.missav\.(com|ai|ws)/widgets/Spot/lib.js url reject
 
 
 # hostname，将对以下域名进行MITM（MAN-IN-THE-MIDDLE：中间人攻击）
-hostname = api.m.jd.com, ms.jr.jd.com, daojia.jd.com, *.jd.com, jpush.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com, acs.m.taobao.com, amdc.m.taobao.com, guide-acs.m.taobao.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, poplayer.template.alibaba.com, gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.51credit.com, api.wfdata.club, **.pangolin-sdk-toutiao*.com, *.pglstatp-toutiao.com, *.snssdk.com, *.zijieapi.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, *.god.game.163.com
+hostname = api.m.jd.com, ms.jr.jd.com, daojia.jd.com, *.jd.com, jpush.jd.com, dsp-x.jd.com, bdsp-x.jd.com, m.jr.jd.com, acs.m.taobao.com, amdc.m.taobao.com, guide-acs.m.taobao.com, portal-portm.meituan.com, mall.meituan.com, i.waimai.meituan.com, poplayer.template.alibaba.com, gab.122.gov.cn, ad.12306.cn, mesu.apple.com, gdmf.apple.com, *.amap.com, mobile.cebbank.com, yghsh.cebbank.com, static.95508.com, mps.95508.com, www.cmbc.com.cn, rs.creditcard.cmbc.com.cn, midc.cdn-static.abchina.com.cn, enjoy.cdn-static.abchina.com, firefly.abchina.com.cn, lban.spdb.com.cn, wap.spdb.com.cn, webappcfg.paas.cmbchina.com, mbmodule-openapi.paas.cmbchina.com, wap.bank.ecitic.com, imcs.citicbank.com, ump.sz.creditcard.ecitic.com, m.creditcard.ecitic.com, creditcardapp.bankcomm.cn, creditcardapp.bankcomm.com, creditcard.bankcomm.cn, creditcard.bankcomm.com, api.51credit.com, api.wfdata.club, *.pangolin-sdk-toutiao*.com, *.pglstatp-toutiao.com, -redirector.googlevideo.com, *.googlevideo.com, www.youtube.com, s.youtube.com, youtubei.googleapis.com, 91jable.top, 91jable.sbs, jable.cfd, jable1.com, jable888.com, jable888.net, jable1.net, jable1.art, jable1.nl, .jable.tv, en.jable.tv, jable.tv, missav.live, missav.ws, missav.ai, missav.com, *.god.game.163.com
